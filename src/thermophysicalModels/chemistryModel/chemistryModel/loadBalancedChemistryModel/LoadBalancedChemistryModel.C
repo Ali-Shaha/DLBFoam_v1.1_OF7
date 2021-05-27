@@ -31,7 +31,7 @@ License
 
 template <class ReactionThermo, class ThermoType>
 Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::
-    LoadBalancedChemistryModel(const ReactionThermo& thermo)
+    LoadBalancedChemistryModel(ReactionThermo& thermo)
     : 
         StandardChemistryModel<ReactionThermo, ThermoType>(thermo),
         balancer_(createBalancer()), 
@@ -222,20 +222,18 @@ void Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::solveSingle
     clockTime time;
     time.timeIncrement();
 
-    // Define a const label to pass as the cell index placeholder
-    const label arbitrary = 0;
 
     // Calculate the chemical source terms
     while(timeLeft > small)
     {
         scalar dt = timeLeft;
         this->solve(
-            problem.pi,
-            problem.Ti,
             problem.c,
-            arbitrary,
+            problem.Ti,
+            problem.pi,
             dt,
             problem.deltaTChem);
+
         timeLeft -= dt;
     }
 
@@ -274,6 +272,31 @@ Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::updateReactionRate
 
     return deltaTMin;
 }
+//{
+//    scalar deltaTMin = great;
+
+//    for(const auto& array : solutions)
+//    {
+//        for(const auto& solution : array)
+//        {
+
+//            for(label j = 0; j < this->nSpecie_; j++)
+//            {
+//                this->RR_[j][solution.cellid] =
+//                    solution.c_increment[j] * this->specieThermo_[j].W();
+//            }
+
+//            deltaTMin = min(solution.deltaTChem, deltaTMin);
+//            
+//            this->deltaTChem_[solution.cellid] =
+//                min(solution.deltaTChem, this->deltaTChemMax_);
+//            
+//            cpuTimes_[solution.cellid] = solution.cpuTime;
+//        }
+//    }
+
+//    return deltaTMin;
+//}
 
 
 template <class ReactionThermo, class ThermoType>
@@ -367,12 +390,12 @@ Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::getProblems
         {
             for(label i = 0; i < this->nSpecie_; i++)
             {
-                concentration[i] = rho[celli] * this->Y_[i][celli] / this->specieThermos_[i].W();
+                concentration[i] = rho[celli] * this->Y_[i][celli] / this->specieThermo_[i].W();
                 massFraction[i] = this->Y_[i][celli];
             }
             
             ChemistryProblem problem;
-            problem.c = getVariable(concentration, massFraction);        
+            problem.c = getVariable(concentration, massFraction);
             problem.Ti = T[celli];
             problem.pi = p[celli];
             problem.rhoi = rho[celli];
@@ -464,7 +487,7 @@ void Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::updateReactio
 {
     for(label j = 0; j < this->nSpecie_; j++)
     {
-        this->RR_[j][i] = solution.c_increment[j] * this->specieThermos_[j].W();
+        this->RR_[j][i] = solution.c_increment[j] * this->specieThermo_[j].W();
     }
     this->deltaTChem_[i] = min(solution.deltaTChem, this->deltaTChemMax_);
 }
@@ -477,5 +500,4 @@ Foam::scalarField Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::
 {
     return concentration;
 }
-
 

@@ -33,7 +33,7 @@ namespace Foam {
 
 template <class ReactionThermo, class ThermoType>
 pyJacLoadBalancedChemistryModel<ReactionThermo, ThermoType>::pyJacLoadBalancedChemistryModel(
-    const ReactionThermo& thermo)
+    ReactionThermo& thermo)
     : LoadBalancedChemistryModel<ReactionThermo, ThermoType>(thermo)
     , sp_enth_form(this->nSpecie_) {
 
@@ -76,7 +76,7 @@ pyJacLoadBalancedChemistryModel<ReactionThermo, ThermoType>::~pyJacLoadBalancedC
 
 template <class ReactionThermo, class ThermoType>
 void pyJacLoadBalancedChemistryModel<ReactionThermo, ThermoType>::jacobian(
-    const scalar t, const scalarField& c, const label li, scalarField& dcdt, scalarSquareMatrix& J)
+    const scalar t, const scalarField& c, scalarField& dcdt, scalarSquareMatrix& J)
     const {
 
     std::vector<scalar> yToPyJac(this->nSpecie_ + 1, 0.0);
@@ -118,7 +118,7 @@ void pyJacLoadBalancedChemistryModel<ReactionThermo, ThermoType>::jacobian(
 
 template <class ReactionThermo, class ThermoType>
 void pyJacLoadBalancedChemistryModel<ReactionThermo, ThermoType>::derivatives(
-    const scalar t, const scalarField& c, const label li, scalarField& dcdt) const {
+    const scalar t, const scalarField& c,  scalarField& dcdt) const {
 
     std::vector<scalar> yToPyJac(this->nSpecie_ + 1, 0.0);
     std::vector<scalar> dy(this->nSpecie_, 0.0);
