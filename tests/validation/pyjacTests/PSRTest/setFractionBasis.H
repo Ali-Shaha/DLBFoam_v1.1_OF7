@@ -11,7 +11,7 @@
             const word& name = Y[i].name();
             if (fractions.found(name))
             {
-                X0[i] = fractions.lookup<scalar>(name);
+                X0[i] = readScalar(fractions.lookup(name));
             }
         }
 
@@ -35,7 +35,7 @@
             const word& name = Y[i].name();
             if (fractions.found(name))
             {
-                Y0[i] = fractions.lookup<scalar>(name);
+                Y0[i] = readScalar(fractions.lookup(name));
             }
         }
 

@@ -31,9 +31,10 @@ Description
 #include "fvCFD.H"
 #include "rhoReactionThermo.H"
 #include "BasicChemistryModel.H"
-#include "multiComponentMixture.H"
+#include "reactingMixture.H"
 #include "chemistrySolver.H"
 #include "OFstream.H"
+#include "thermoPhysicsTypes.H"
 #include "basicSpecieMixture.H"
 #include "cellModeller.H"
 #include "thermoTypeFunctions.H"
@@ -168,7 +169,7 @@ int main(int argc, char *argv[])
         #include "solveChemistry.H"
 
         bool Hcheck1a = validatePyjacEnthalpy(Y, thermo.T()[0], 587946.4983283795, 1e-5);
-        bool Hcheck1b = validatePyjacEnthalpy(Y, thermo.T()[0], thermo.ha().ref()[0], 1e-6);
+        bool Hcheck1b = validatePyjacEnthalpy(Y, thermo.T()[0], thermo.hc().ref()[0]+thermo.he().ref()[0], 1e-6);
 
         bool Tcheck = checkTemperature(thermo.T()[0], 2660.038226, 1e-6);
 
