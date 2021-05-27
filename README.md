@@ -160,13 +160,8 @@ abs(T<sub>cell</sub>-T<sub>ref</sub>)<deltaT.
 
 For a working example, check the tutorials given in tutorials folder.
 
-## Contributors
-- Bulut Tekgül (buluttekgul@gmail.com)
-- Petteri Peltonen (petteri.peltonen@aalto.fi)
-- Heikki Kahila (heikki.kahila@wartsila.com)
-- Ilya Morev (ilya.morev@aalto.fi)
-- Mahmoud Gadalla (mahmoud.gadalla@aalto.fi)
-
+## Contributor to this version
+- Ali Shahanaghi (ali.shahanaghi@aalto.fi)
 
 ## Getting help and reporting bugs
 
