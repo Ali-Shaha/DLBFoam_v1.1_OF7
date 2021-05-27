@@ -28,7 +28,7 @@ License
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class ChemistryModel>
-Foam::ode_LAPACK<ChemistryModel>::ode_LAPACK(const typename ChemistryModel::reactionThermo& thermo)
+Foam::ode_LAPACK<ChemistryModel>::ode_LAPACK(typename ChemistryModel::reactionThermo& thermo)
 :
     chemistrySolver<ChemistryModel>(thermo),
     coeffsDict_(this->subDict("odeCoeffs")),
@@ -49,10 +49,9 @@ Foam::ode_LAPACK<ChemistryModel>::~ode_LAPACK()
 template<class ChemistryModel>
 void Foam::ode_LAPACK<ChemistryModel>::solve
 (
-    scalar& p,
-    scalar& T,
     scalarField& c,
-    const label li,
+    scalar& T,
+    scalar& p,
     scalar& deltaT,
     scalar& subDeltaT
 ) const
@@ -77,7 +76,7 @@ void Foam::ode_LAPACK<ChemistryModel>::solve
         cTp_[nSpecie] = T;
         cTp_[nSpecie+1] = p;
 
-        odeSolver_->solve(0, deltaT, cTp_, li, subDeltaT);
+        odeSolver_->solve(0, deltaT, cTp_, subDeltaT);
 
         for (label i=0; i<nSpecie; i++)
         {
@@ -100,7 +99,7 @@ void Foam::ode_LAPACK<ChemistryModel>::solve
             cTp_[i+1] = c[i];
         }
 
-        odeSolver_->solve(0, deltaT, cTp_, li, subDeltaT);
+        odeSolver_->solve(0, deltaT, cTp_, subDeltaT);
 
         T = cTp_[0];
         p = cTp_[nSpecie];

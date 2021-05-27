@@ -23,30 +23,102 @@ License
     
 \*---------------------------------------------------------------------------*/
 
-#include "LoadBalancedChemistryModel.H"
-#include "pyJacLoadBalancedChemistryModel.H"
+#include "DLBChemistrySolverTypes.H"
+
+#include "thermoPhysicsTypes.H"
 #include "psiReactionThermo.H"
 #include "rhoReactionThermo.H"
-
-#include "forCommonGases.H"
-#include "forCommonLiquids.H"
-#include "forPolynomials.H"
-#include "DLBmakeChemistrySolver.H"
-
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-    forCommonGases(defineChemistrySolvers, psiReactionThermo);
-    forCommonGases(defineChemistrySolvers, rhoReactionThermo);
+    // Chemistry solvers based on sensibleEnthalpy
+    makeChemistrySolverTypes(psiReactionThermo, constGasHThermoPhysics);
+    makeChemistrySolverTypes(psiReactionThermo, gasHThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        psiReactionThermo,
+        constIncompressibleGasHThermoPhysics
+    );
+    makeChemistrySolverTypes
+    (
+        psiReactionThermo,
+        incompressibleGasHThermoPhysics
+    );
+    makeChemistrySolverTypes(psiReactionThermo, icoPoly8HThermoPhysics);
+    makeChemistrySolverTypes(psiReactionThermo, constFluidHThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        psiReactionThermo,
+        constAdiabaticFluidHThermoPhysics
+    );
+    makeChemistrySolverTypes(psiReactionThermo, constHThermoPhysics);
 
-    forCommonLiquids(defineChemistrySolvers, rhoReactionThermo);
+    makeChemistrySolverTypes(rhoReactionThermo, constGasHThermoPhysics);
+    makeChemistrySolverTypes(rhoReactionThermo, gasHThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        rhoReactionThermo,
+        constIncompressibleGasHThermoPhysics
+    );
+    makeChemistrySolverTypes
+    (
+        rhoReactionThermo,
+        incompressibleGasHThermoPhysics
+    );
+    makeChemistrySolverTypes(rhoReactionThermo, icoPoly8HThermoPhysics);
+    makeChemistrySolverTypes(rhoReactionThermo, constFluidHThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        rhoReactionThermo,
+        constAdiabaticFluidHThermoPhysics
+    );
+    makeChemistrySolverTypes(rhoReactionThermo, constHThermoPhysics);
 
-    forPolynomials(defineChemistrySolvers, rhoReactionThermo);
+    // Chemistry solvers based on sensibleInternalEnergy
+    makeChemistrySolverTypes(psiReactionThermo, constGasEThermoPhysics);
+    makeChemistrySolverTypes(psiReactionThermo, gasEThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        psiReactionThermo,
+        constIncompressibleGasEThermoPhysics
+    );
+    makeChemistrySolverTypes
+    (
+        psiReactionThermo,
+        incompressibleGasEThermoPhysics
+    );
+    makeChemistrySolverTypes(psiReactionThermo, icoPoly8EThermoPhysics);
+    makeChemistrySolverTypes(psiReactionThermo, constFluidEThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        psiReactionThermo,
+        constAdiabaticFluidEThermoPhysics
+    );
+    makeChemistrySolverTypes(psiReactionThermo, constEThermoPhysics);
 
-
-
+    makeChemistrySolverTypes(rhoReactionThermo, constGasEThermoPhysics);
+    makeChemistrySolverTypes(rhoReactionThermo, gasEThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        rhoReactionThermo,
+        constIncompressibleGasEThermoPhysics
+    );
+    makeChemistrySolverTypes
+    (
+        rhoReactionThermo,
+        incompressibleGasEThermoPhysics
+    );
+    makeChemistrySolverTypes(rhoReactionThermo, icoPoly8EThermoPhysics);
+    makeChemistrySolverTypes(rhoReactionThermo, constFluidEThermoPhysics);
+    makeChemistrySolverTypes
+    (
+        rhoReactionThermo,
+        constAdiabaticFluidEThermoPhysics
+    );
+    makeChemistrySolverTypes(rhoReactionThermo, constEThermoPhysics);
 }
 
-// ************************************************************************* //
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

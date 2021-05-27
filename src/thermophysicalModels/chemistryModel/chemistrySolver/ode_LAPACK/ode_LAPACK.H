@@ -71,7 +71,7 @@ public:
     // Constructors
 
         //- Construct from thermo
-        ode_LAPACK(const typename ChemistryModel::reactionThermo& thermo);
+        ode_LAPACK(typename ChemistryModel::reactionThermo& thermo);
 
 
     //- Destructor
@@ -83,10 +83,9 @@ public:
         //- Update the concentrations and return the chemical time
         virtual void solve
         (
-            scalar& p,
-            scalar& T,
             scalarField& c,
-            const label li,
+            scalar& T,
+            scalar& p,
             scalar& deltaT,
             scalar& subDeltaT
         ) const;
