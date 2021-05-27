@@ -196,7 +196,6 @@ public:
         (
             scalar& x,
             scalarField& y,
-            const label li,
             scalar& dxTry
         ) const;
 
@@ -210,7 +209,6 @@ public:
         (
             scalar& x,
             scalarField& y,
-            const label li,
             stepState& step
         ) const;
 
@@ -222,7 +220,6 @@ public:
             const scalar xStart,
             const scalar xEnd,
             scalarField& y,
-            const label li,
             scalar& dxEst
         ) const;
 

@@ -118,12 +118,11 @@ void Foam::ODESolver::solve
 (
     scalar& x,
     scalarField& y,
-    const label li,
     scalar& dxTry
 ) const
 {
     stepState step(dxTry);
-    solve(x, y, li, step);
+    solve(x, y, step);
     dxTry = step.dxTry;
 }
 
@@ -132,12 +131,11 @@ void Foam::ODESolver::solve
 (
     scalar& x,
     scalarField& y,
-    const label li,
     stepState& step
 ) const
 {
     scalar x0 = x;
-    solve(x, y, li, step.dxTry);
+    solve(x, y, step.dxTry);
     step.dxDid = x - x0;
 }
 
@@ -147,7 +145,6 @@ void Foam::ODESolver::solve
     const scalar xStart,
     const scalar xEnd,
     scalarField& y,
-    const label li,
     scalar& dxTry
 ) const
 {
@@ -169,7 +166,7 @@ void Foam::ODESolver::solve
         }
 
         // Integrate as far as possible up to step.dxTry
-        solve(x, y, li, step);
+        solve(x, y, step);
 
         // Check if reached xEnd
         if ((x - xEnd)*(xEnd - xStart) >= 0)
