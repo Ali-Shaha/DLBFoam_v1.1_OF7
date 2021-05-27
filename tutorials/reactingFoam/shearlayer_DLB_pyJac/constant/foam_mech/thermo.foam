@@ -1,4 +1,3 @@
-#include "chem.foam"
 N2
 {
 	specie
@@ -1729,4 +1728,4 @@ OC12H23OOH
 		C	12;
 	}
 }
-
+#include "$FOAM_CASE/constant/foam_mech/specieElements.foam"

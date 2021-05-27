@@ -18,7 +18,7 @@ FoamFile
 thermoType
 {
     type            hePsiThermo;
-    mixture         multiComponentMixture;
+    mixture         reactingMixture;
     transport       sutherland;
     thermo          janaf;
     energy          sensibleEnthalpy;
@@ -28,7 +28,9 @@ thermoType
 
 inertSpecie N2;
 
-#include "$FOAM_CASE/constant/foam_mech/thermo.foam"
+chemistryReader foamChemistryReader;
+foamChemistryFile "$FOAM_CASE/constant/foam_mech/chem.foam";
+foamChemistryThermoFile "$FOAM_CASE/constant/foam_mech/thermo.foam";
 
 
 // ************************************************************************* //

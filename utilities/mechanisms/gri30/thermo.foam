@@ -1,4 +1,3 @@
-#include "chem.foam"
 H2
 {
 	specie
@@ -1707,4 +1706,4 @@ CH3CHO
 		C	2;
 	}
 }
-
+#include "$FOAM_CASE/constant/foam_mech/specieElements.foam"
