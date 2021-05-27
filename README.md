@@ -2,8 +2,9 @@
 ![v1.1](https://img.shields.io/badge/DLBFoam-v1.1-blue)
 ![OpenFOAM 7](https://img.shields.io/badge/OpenFOAM-7-brightgreen)
 
-## DLBFoam v1.1 - What's new?
-DLBFoam v1.1 introduces a fully analytical chemistry Jacobian via [pyJac](https://github.com/SLACKHA/pyJac), and optimized ODE solution routines via [LAPACK](http://www.netlib.org/lapack/). Combined with the load balancing features, v1.1 provides up to x250 speed-up compared to standard OpenFOAM chemistry model. If you are interested with using only dynamic load balancing without any third party dependency, please use [DLBFoam v1.0](https://github.com/blttkgl/DLBFoam-1.0).
+## DLBFoam v1.1_OF7 - What's new?
+[DLBFoam v1.1](https://github.com/Aalto-CFD/DLBFoam) introduces a fully analytical chemistry Jacobian via [pyJac](https://github.com/SLACKHA/pyJac), and optimized ODE solution routines via [LAPACK](http://www.netlib.org/lapack/) for OpenFOAM latest release. Combined with the load balancing features, v1.1 provides up to x250 speed-up compared to standard OpenFOAM chemistry model.
+Present development of the code supports the OpenFOAM-7 version. If you are interested with using only dynamic load balancing without any third party dependency, please use [DLBFoam v1.0_OF7](https://github.com/blttkgl/DLBFoam-1.0/tree/v1.0_OF7).
 
 ## What is DLBFoam?
 DLBFoam is an open-source library for OpenFOAM. It introduces dynamic load balancing and a zonal reference mapping model 
