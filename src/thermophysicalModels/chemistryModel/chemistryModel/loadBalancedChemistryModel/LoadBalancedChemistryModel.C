@@ -272,31 +272,6 @@ Foam::LoadBalancedChemistryModel<ReactionThermo, ThermoType>::updateReactionRate
 
     return deltaTMin;
 }
-//{
-//    scalar deltaTMin = great;
-
-//    for(const auto& array : solutions)
-//    {
-//        for(const auto& solution : array)
-//        {
-
-//            for(label j = 0; j < this->nSpecie_; j++)
-//            {
-//                this->RR_[j][solution.cellid] =
-//                    solution.c_increment[j] * this->specieThermo_[j].W();
-//            }
-
-//            deltaTMin = min(solution.deltaTChem, deltaTMin);
-//            
-//            this->deltaTChem_[solution.cellid] =
-//                min(solution.deltaTChem, this->deltaTChemMax_);
-//            
-//            cpuTimes_[solution.cellid] = solution.cpuTime;
-//        }
-//    }
-
-//    return deltaTMin;
-//}
 
 
 template <class ReactionThermo, class ThermoType>
