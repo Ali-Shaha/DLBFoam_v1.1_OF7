@@ -1,0 +1,20 @@
+//This file is for mechanism: marinov
+species
+11
+(
+H2
+H
+O2
+O
+OH
+HO2
+H2O2
+H2O
+AR
+HE
+N2
+);
+
+reactions
+{
+}

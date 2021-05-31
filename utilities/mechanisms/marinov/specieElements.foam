@@ -1,0 +1,81 @@
+H2
+{
+	elements
+	{
+		H	2;
+	}
+}
+H
+{
+	elements
+	{
+		H	1;
+	}
+}
+O2
+{
+	elements
+	{
+		O	2;
+	}
+}
+O
+{
+	elements
+	{
+		O	1;
+	}
+}
+OH
+{
+	elements
+	{
+		H	1;
+		O	1;
+	}
+}
+HO2
+{
+	elements
+	{
+		H	1;
+		O	2;
+	}
+}
+H2O2
+{
+	elements
+	{
+		H	2;
+		O	2;
+	}
+}
+H2O
+{
+	elements
+	{
+		H	2;
+		O	1;
+	}
+}
+AR
+{
+	elements
+	{
+		Ar	1;
+	}
+}
+N2
+{
+	elements
+	{
+		N	2;
+	}
+}
+HE
+{
+	elements
+	{
+		He	1;
+	}
+}
