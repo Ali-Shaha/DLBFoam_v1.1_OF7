@@ -283,4 +283,4 @@ HE
 		kappaLogCoeffs<4>	(	-5.364467948438828 0.5587376428242198 0.013660612271096814 -0.0007243508039219348  );
 	}
 }
-
+#include "$FOAM_CASE/constant/foam_mech/specieElements.foam"
