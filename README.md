@@ -167,7 +167,7 @@ For a working example, check the tutorials given in tutorials folder.
 
 Please submit a GitHub issue if you found a bug in the program. If you need help with the software or have further questions, either open an issue or contact the contributors.
 
-## Contributors to main branch [DLBFoam v1.1](https://github.com/Aalto-CFD/DLBFoam)
+## Contributors to [DLBFoam v1.1](https://github.com/Aalto-CFD/DLBFoam)
 - Bulut Tekgül (buluttekgul@gmail.com)
 - Petteri Peltonen (petteri.peltonen@aalto.fi)
 - Heikki Kahila (heikki.kahila@wartsila.com)
