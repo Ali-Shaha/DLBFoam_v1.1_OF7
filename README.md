@@ -161,12 +161,12 @@ abs(T<sub>cell</sub>-T<sub>ref</sub>)<deltaT.
 
 For a working example, check the tutorials given in tutorials folder.
 
-## Contributor to this version
+## Contact for the current version of the code:
 - Ali Shahanaghi (ali.shahanaghi@aalto.fi)
 
 ## Getting help and reporting bugs
 
-Please submit a GitHub issue if you found a bug in the program. If you need help with the software or have further questions, either open an issue or contact the contributors.
+Please submit a GitHub issue if you found a bug in the program. If you need help with the software or have further questions, either open an issue or contact the contributors, find in [DLBFoam v1.1](https://github.com/Aalto-CFD/DLBFoam) main page.
 
 ## Citation
 
