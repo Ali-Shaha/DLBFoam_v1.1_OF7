@@ -1,4 +1,15 @@
 //This file is for mechanism: marinov
+elements
+6
+(
+H
+O
+C
+N
+Ar
+He
+);
+
 species
 11
 (

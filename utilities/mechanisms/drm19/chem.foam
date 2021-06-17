@@ -1,3 +1,14 @@
+//This file is for mechanism: drm19
+elements
+5
+(
+O
+H
+C
+N
+Ar
+);
+
 species
 21
 (
@@ -23,3 +34,7 @@ C2H6
 AR
 N2
 );
+
+reactions
+{
+}

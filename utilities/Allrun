@@ -13,8 +13,12 @@ mechPath=mechanisms/$mechname/
 [[ -d foam_mech ]] && rm -r foam_mech
 mkdir foam_mech
 
-if [[ ! -f "$mechPath/chem.foam" ]]
+if [ ! -f $mechPath/chem.foam ] ||
+   [ ! "$(grep -c elements $mechPath/chem.foam)" -gt 0 ] ||
+   [ ! "$(grep -c reaction $mechPath/chem.foam)" -gt 0 ];
 then
+    echo "OVERWRITING chem.foam."    
+
     # make the chem.foam file for pyJac
     #Determine the species within a pyjac output file
     grep -A100000 'Species Indexes' "$mechPath/out/mechanism.h"  > tmp.txt
@@ -25,9 +29,20 @@ then
 
     NS=$(cat tmp4.txt | wc -l)
 
+    #Determine the elements within a cti mechanism file
+    sed -n '/elements/,/species=/{/species=/b;p}' "$mechPath/chem.cti" > tmp5.txt
+    sed 's/elements="//g; s/",//g; s/^[ \t]*// ' tmp5.txt | tr " " "\n" | sed '/^$/d' >tmp6.txt
+
+    NE=$(cat tmp6.txt | wc -l)
 
     echo "//This file is for mechanism: $mechname" > tmp
-    echo "species" >> tmp
+
+    echo "elements" >> tmp
+    echo "$NE" >> tmp
+    echo "(" >> tmp
+    cat tmp6.txt >> tmp
+
+    printf ");\n\nspecies\n" >> tmp
     echo "$NS" >> tmp
     echo "(" >> tmp
 
