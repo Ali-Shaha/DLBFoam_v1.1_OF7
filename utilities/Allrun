@@ -13,6 +13,9 @@ mechPath=mechanisms/$mechname/
 [[ -d foam_mech ]] && rm -r foam_mech
 mkdir foam_mech
 
+echo "OVERWRITING thermo.foam."
+sed -i '/^#/d' $mechPath/thermo.foam
+
 if [ ! -f $mechPath/chem.foam ] ||
    [ ! "$(grep -c elements $mechPath/chem.foam)" -gt 0 ] ||
    [ ! "$(grep -c reaction $mechPath/chem.foam)" -gt 0 ];
